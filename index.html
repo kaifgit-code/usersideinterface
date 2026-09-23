@@ -1,0 +1,4163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shramsahyog</title>
+
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+ background:#f5f7fb;
+ color:#172033;
+ min-height:100vh;
+ transition:background .2s,color .2s;
+}
+
+body.dark{
+ background:#0f172a;
+ color:#e2e8f0;
+}
+
+body.dark .auth-card,
+body.dark .form-card,
+body.dark .header,
+body.dark .welcome ~ .search,
+body.dark .search,
+body.dark .quick,
+body.dark .category-card,
+body.dark .section,
+body.dark .worker-card,
+body.dark .booking-card,
+body.dark .quote-box,
+body.dark .support-card,
+body.dark .info-card,
+body.dark .history-item,
+body.dark .support-item,
+body.dark .how,
+body.dark .bottom{
+ background:#1e293b;
+ color:#e2e8f0;
+ border-color:#334155;
+}
+
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .form-group textarea,
+body.dark .search input{
+ background:#0f172a;
+ color:#e2e8f0;
+ border-color:#334155;
+}
+
+body.dark .desc,
+body.dark .note{
+ color:#94a3b8;
+}
+
+.top-quick-nav{
+ position:sticky;
+ top:0;
+ z-index:25;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:#fff;
+ padding:9px 15px;
+ border-bottom:1px solid #e2e8f0;
+}
+
+body.dark .top-quick-nav{
+ background:#1e293b;
+ border-color:#334155;
+}
+
+.nav-back-btn{
+ background:#f1f5f9;
+ color:#334155;
+ padding:8px 13px;
+ border-radius:9px;
+ font-weight:bold;
+ font-size:14px;
+}
+
+body.dark .nav-back-btn{
+ background:#334155;
+ color:#e2e8f0;
+}
+
+.top-quick-right{
+ display:flex;
+ gap:8px;
+}
+
+.quick-toggle-btn{
+ background:#eaf1ff;
+ color:#2563eb;
+ padding:8px 11px;
+ border-radius:9px;
+ font-weight:bold;
+ font-size:13px;
+}
+
+body.dark .quick-toggle-btn{
+ background:#334155;
+ color:#93c5fd;
+}
+
+button{
+ cursor:pointer;
+ border:none;
+}
+
+input,select,textarea{
+ font-family:inherit;
+}
+
+.hidden{
+ display:none!important;
+}
+
+/* AUTH */
+
+#authPage,
+.form-page{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+#authPage{
+ background:linear-gradient(135deg,#eef4ff,#ffffff);
+}
+
+.auth-card,
+.form-card{
+ width:100%;
+ max-width:430px;
+ background:#fff;
+ border-radius:22px;
+ padding:28px 22px;
+ box-shadow:0 12px 35px rgba(0,0,0,.10);
+}
+
+.auth-card{
+ text-align:center;
+ padding:35px 25px;
+}
+
+.logo{
+ width:76px;
+ height:76px;
+ margin:0 auto 18px;
+ border-radius:20px;
+ background:#2563eb;
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:30px;
+ font-weight:bold;
+}
+
+.auth-card h1{
+ font-size:30px;
+ margin-bottom:8px;
+}
+
+.tagline{
+ color:#64748b;
+ line-height:1.5;
+ margin-bottom:28px;
+}
+
+.auth-buttons,
+.form-actions{
+ display:flex;
+ flex-direction:column;
+ gap:12px;
+}
+
+.primary-btn,
+.secondary-btn,
+.back-btn{
+ width:100%;
+ padding:14px;
+ border-radius:11px;
+ font-size:15px;
+ font-weight:bold;
+}
+
+.primary-btn{
+ background:#2563eb;
+ color:#fff;
+}
+
+.secondary-btn{
+ background:#eaf1ff;
+ color:#2563eb;
+}
+
+.back-btn{
+ background:#f1f5f9;
+ color:#334155;
+}
+
+.form-page{
+ display:none;
+}
+
+.form-card h2{
+ text-align:center;
+ margin-bottom:20px;
+}
+
+.form-group{
+ margin-bottom:14px;
+}
+
+.form-group label{
+ display:block;
+ font-size:14px;
+ font-weight:bold;
+ margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+ width:100%;
+ padding:13px;
+ border:1px solid #d8dee9;
+ border-radius:10px;
+ outline:none;
+ font-size:15px;
+}
+
+.form-group textarea{
+ min-height:90px;
+ resize:vertical;
+}
+
+.forgot{
+ display:block;
+ margin:5px 0 15px auto;
+ background:none;
+ color:#2563eb;
+ font-weight:bold;
+}
+
+.worker-kyc-box{
+ display:none;
+ margin-top:8px;
+ padding:15px;
+ background:#f8fafc;
+ border:1px solid #e2e8f0;
+ border-radius:12px;
+}
+
+.worker-kyc-title{
+ font-weight:bold;
+ margin-bottom:12px;
+}
+
+.note{
+ font-size:12px;
+ color:#64748b;
+ line-height:1.45;
+ margin-top:5px;
+}
+
+.check{
+ display:flex;
+ gap:8px;
+ font-size:13px;
+ line-height:1.4;
+}
+
+.check input{
+ width:auto!important;
+ margin-top:2px;
+}
+
+/* APP */
+
+#appPage{
+ display:none;
+ min-height:100vh;
+ padding-bottom:75px;
+}
+
+.header{
+ position:sticky;
+ top:0;
+ z-index:20;
+ background:#fff;
+ padding:15px 20px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ box-shadow:0 2px 10px rgba(0,0,0,.07);
+}
+
+.app-logo{
+ font-size:22px;
+ font-weight:bold;
+ color:#2563eb;
+}
+
+.logout{
+ background:#fee2e2;
+ color:#dc2626;
+ padding:9px 13px;
+ border-radius:9px;
+ font-weight:bold;
+}
+
+.container{
+ width:100%;
+ max-width:1000px;
+ margin:auto;
+ padding:18px;
+}
+
+.welcome{
+ background:#2563eb;
+ color:#fff;
+ padding:23px;
+ border-radius:20px;
+ margin-bottom:18px;
+}
+
+.welcome h2{
+ margin-bottom:7px;
+}
+
+.welcome p{
+ opacity:.9;
+}
+
+.search{
+ background:#fff;
+ padding:14px;
+ border-radius:14px;
+ box-shadow:0 5px 15px rgba(0,0,0,.05);
+ margin-bottom:18px;
+}
+
+.search input{
+ width:100%;
+ padding:13px;
+ border:1px solid #dbe2ea;
+ border-radius:10px;
+ font-size:15px;
+ outline:none;
+}
+
+.quick-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+ margin-bottom:20px;
+}
+
+.quick{
+ background:#fff;
+ border-radius:14px;
+ padding:14px;
+ box-shadow:0 4px 12px rgba(0,0,0,.06);
+ font-weight:bold;
+ text-align:center;
+}
+
+.quick span{
+ display:block;
+ font-size:25px;
+ margin-bottom:5px;
+}
+
+.emergency{
+ color:#dc2626;
+ background:#fff1f2;
+}
+
+.section-title{
+ font-size:21px;
+ margin-bottom:14px;
+}
+
+.category-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+
+.category-card{
+ background:#fff;
+ padding:19px 10px;
+ border-radius:16px;
+ text-align:center;
+ box-shadow:0 5px 16px rgba(0,0,0,.06);
+}
+
+.category-icon{
+ font-size:33px;
+ margin-bottom:8px;
+}
+
+.category-card h3{
+ font-size:15px;
+}
+
+/* SECTIONS */
+
+.section{
+ display:none;
+ background:#fff;
+ padding:20px;
+ border-radius:18px;
+ margin-top:18px;
+ box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.section h2{
+ margin-bottom:7px;
+}
+
+.desc{
+ color:#64748b;
+ line-height:1.5;
+ margin-bottom:18px;
+}
+
+.selected{
+ background:#eff6ff;
+ color:#1d4ed8;
+ padding:13px;
+ border-radius:11px;
+ font-weight:bold;
+ margin-bottom:15px;
+}
+
+.worker-card,
+.booking-card,
+.quote-box,
+.support-card,
+.info-card{
+ background:#f8fafc;
+ border:1px solid #e2e8f0;
+ padding:16px;
+ border-radius:14px;
+ margin-bottom:12px;
+}
+
+.worker-info{
+ display:flex;
+ gap:12px;
+ align-items:center;
+ margin-bottom:12px;
+}
+
+.avatar{
+ width:54px;
+ height:54px;
+ border-radius:50%;
+ background:#dbeafe;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:27px;
+}
+
+.worker-name{
+ font-weight:bold;
+ font-size:17px;
+}
+
+.rating-small{
+ font-size:13px;
+ margin-top:4px;
+}
+
+.actions{
+ display:flex;
+ gap:9px;
+ margin-top:13px;
+}
+
+.actions button{
+ flex:1;
+ padding:11px;
+ border-radius:9px;
+ font-weight:bold;
+}
+
+.accept{
+ background:#16a34a;
+ color:white;
+}
+
+.reject{
+ background:#fee2e2;
+ color:#dc2626;
+}
+
+.status{
+ padding:13px;
+ border-radius:10px;
+ background:#eff6ff;
+ color:#1d4ed8;
+ font-weight:bold;
+ margin-bottom:18px;
+}
+
+.info-card p{
+ margin:7px 0;
+}
+
+.quote-item{
+ display:flex;
+ justify-content:space-between;
+ padding:11px 0;
+ border-bottom:1px solid #e2e8f0;
+}
+
+.quote-total{
+ display:flex;
+ justify-content:space-between;
+ font-size:19px;
+ font-weight:bold;
+ padding-top:14px;
+}
+
+.payment-option{
+ width:100%;
+ text-align:left;
+ padding:14px;
+ margin-bottom:9px;
+ border:2px solid #e2e8f0;
+ border-radius:11px;
+ background:#f8fafc;
+ font-weight:bold;
+}
+
+.payment-option.selected{
+ border-color:#2563eb;
+ background:#eff6ff;
+}
+
+/* TRACKING */
+
+.timeline{
+ padding-left:30px;
+}
+
+.step{
+ position:relative;
+ padding-bottom:25px;
+ color:#94a3b8;
+}
+
+.step:before{
+ content:"";
+ position:absolute;
+ left:-24px;
+ top:2px;
+ width:15px;
+ height:15px;
+ border-radius:50%;
+ background:#cbd5e1;
+}
+
+.step:after{
+ content:"";
+ position:absolute;
+ left:-18px;
+ top:17px;
+ width:2px;
+ height:100%;
+ background:#e2e8f0;
+}
+
+.step:last-child:after{
+ display:none;
+}
+
+.step.active{
+ color:#2563eb;
+ font-weight:bold;
+}
+
+.step.active:before{
+ background:#2563eb;
+}
+
+.step.done{
+ color:#16a34a;
+ font-weight:bold;
+}
+
+.step.done:before{
+ background:#16a34a;
+}
+
+/* HISTORY */
+
+.history-item{
+ background:#f8fafc;
+ border:1px solid #e2e8f0;
+ padding:15px;
+ border-radius:13px;
+ margin-bottom:11px;
+}
+
+.history-top{
+ display:flex;
+ justify-content:space-between;
+ gap:8px;
+}
+
+.badge{
+ background:#dbeafe;
+ color:#1d4ed8;
+ padding:5px 8px;
+ border-radius:15px;
+ font-size:11px;
+ font-weight:bold;
+}
+
+.history-item p{
+ margin:7px 0;
+ color:#475569;
+}
+
+/* PROFILE */
+
+.profile{
+ text-align:center;
+}
+
+.profile-avatar{
+ width:78px;
+ height:78px;
+ border-radius:50%;
+ background:#dbeafe;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ margin:0 auto 12px;
+ font-size:36px;
+}
+
+.profile-info{
+ text-align:left;
+ background:#f8fafc;
+ padding:15px;
+ border-radius:12px;
+ margin-top:15px;
+}
+
+.profile-info p{
+ margin:9px 0;
+}
+
+/* RATING */
+
+.star-box{
+ text-align:center;
+ padding:10px;
+}
+
+.stars{
+ font-size:35px;
+ letter-spacing:4px;
+ margin:10px 0;
+}
+
+.star{
+ color:#cbd5e1;
+ cursor:pointer;
+}
+
+.star.on{
+ color:#f59e0b;
+}
+
+.review{
+ width:100%;
+ min-height:80px;
+ padding:12px;
+ border:1px solid #dbe2ea;
+ border-radius:10px;
+ resize:none;
+}
+
+/* SUPPORT */
+
+.support-item{
+ background:#f8fafc;
+ border:1px solid #e2e8f0;
+ padding:14px;
+ border-radius:12px;
+ margin-bottom:10px;
+}
+
+.support-item b{
+ display:block;
+ margin-bottom:5px;
+}
+
+.support-status{
+ color:#2563eb;
+ font-size:12px;
+ font-weight:bold;
+}
+
+/* HOW TO USE */
+
+.how{
+ background:#f8fafc;
+ border-radius:13px;
+ padding:15px;
+ margin-bottom:12px;
+ border-left:4px solid #2563eb;
+}
+
+.how h3{
+ margin-bottom:8px;
+}
+
+.how p{
+ color:#475569;
+ line-height:1.5;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ height:65px;
+ background:#fff;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ box-shadow:0 -3px 15px rgba(0,0,0,.08);
+ z-index:30;
+}
+
+.nav{
+ background:none;
+ color:#64748b;
+ font-size:11px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:3px;
+}
+
+.nav-icon{
+ font-size:20px;
+}
+
+@media(max-width:500px){
+ .container{
+  padding:14px;
+ }
+
+ .welcome{
+  padding:20px;
+ }
+
+ .section{
+  padding:17px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP QUICK NAV: BACK + DARK THEME + LANGUAGE -->
+
+<div class="top-quick-nav">
+
+ <button class="nav-back-btn" onclick="goBackNav()">
+  ← <span data-i18n="back">Back</span>
+ </button>
+
+ <div class="top-quick-right">
+
+  <button class="quick-toggle-btn" onclick="toggleLanguage()">
+   🌐 <span id="langBtnText">हिं / EN</span>
+  </button>
+
+  <button class="quick-toggle-btn" onclick="toggleDarkMode()">
+   <span id="themeBtnText">🌙 Dark</span>
+  </button>
+
+ </div>
+
+</div>
+
+
+<!-- AUTH PAGE -->
+
+<div id="authPage">
+
+ <div class="auth-card">
+
+  <div class="logo">SS</div>
+
+  <h1>Shramsahyog</h1>
+
+  <p class="tagline">
+   Find trusted skilled workers near you
+  </p>
+
+  <div class="auth-buttons">
+
+   <button class="primary-btn"
+           onclick="showLogin()">
+    <span data-i18n="login">Login</span>
+   </button>
+
+   <button class="secondary-btn"
+           onclick="showSignup()">
+    <span data-i18n="createAccount">Create Account</span>
+   </button>
+
+  </div>
+
+ </div>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div id="loginPage" class="form-page">
+
+ <div class="form-card">
+
+  <h2>Login</h2>
+
+  <form onsubmit="login(event)">
+
+   <div class="form-group">
+    <label>Email</label>
+    <input id="loginEmail"
+           type="email"
+           placeholder="Enter email"
+           required>
+   </div>
+
+   <div class="form-group">
+    <label>Password</label>
+    <input id="loginPass"
+           type="password"
+           placeholder="Enter password"
+           required>
+   </div>
+
+   <button type="button"
+           class="forgot"
+           onclick="showForgot()">
+    Forgot Password?
+   </button>
+
+   <div class="form-actions">
+
+    <button class="primary-btn">
+     Login
+    </button>
+
+    <button type="button"
+            class="back-btn"
+            onclick="showAuth()">
+     Back
+    </button>
+
+   </div>
+
+  </form>
+
+ </div>
+
+</div>
+
+
+<!-- FORGOT PASSWORD -->
+
+<div id="forgotPage" class="form-page">
+
+ <div class="form-card">
+
+  <h2>Forgot Password?</h2>
+
+  <p class="desc">
+   Enter your registered email and create a new password.
+  </p>
+
+  <form onsubmit="resetPassword(event)">
+
+   <div class="form-group">
+    <label>Email</label>
+    <input id="resetEmail"
+           type="email"
+           placeholder="Registered email"
+           required>
+   </div>
+
+   <div class="form-group">
+    <label>New Password</label>
+    <input id="newPassword"
+           type="password"
+           minlength="4"
+           required>
+   </div>
+
+   <div class="form-group">
+    <label>Confirm Password</label>
+    <input id="confirmPassword"
+           type="password"
+           minlength="4"
+           required>
+   </div>
+
+   <div class="form-actions">
+
+    <button class="primary-btn">
+     Reset Password
+    </button>
+
+    <button type="button"
+            class="back-btn"
+            onclick="showLogin()">
+     Back to Login
+    </button>
+
+   </div>
+
+  </form>
+
+ </div>
+
+</div>
+
+
+<!-- CREATE ACCOUNT -->
+
+<div id="signupPage" class="form-page">
+
+ <div class="form-card">
+
+  <h2>Create Account</h2>
+
+  <form onsubmit="createAccount(event)">
+
+   <div class="form-group">
+    <label>Full Name</label>
+    <input id="signupName"
+           placeholder="Enter your name"
+           required>
+   </div>
+
+   <div class="form-group">
+    <label>Email</label>
+    <input id="signupEmail"
+           type="email"
+           placeholder="Enter email"
+           required>
+   </div>
+
+   <div class="form-group">
+    <label>Password</label>
+    <input id="signupPassword"
+           type="password"
+           minlength="4"
+           placeholder="Create password"
+           required>
+   </div>
+
+   <div class="form-group">
+
+    <label>Account Type</label>
+
+    <select id="signupRole"
+            onchange="toggleWorkerBox()">
+
+     <option value="Customer">
+      Customer
+     </option>
+
+     <option value="Worker">
+      Skilled Worker
+     </option>
+
+    </select>
+
+   </div>
+
+
+   <!-- WORKER VERIFICATION -->
+
+   <div id="workerKycBox"
+        class="worker-kyc-box">
+
+    <div class="worker-kyc-title">
+     🛡️ Worker Verification
+    </div>
+
+
+    <div class="form-group">
+
+     <label>Aadhaar KYC Status</label>
+
+     <select id="kycStatus">
+
+      <option value="">
+       Select status
+      </option>
+
+      <option value="Verified">
+       KYC Verified
+      </option>
+
+     </select>
+
+     <p class="note">
+      Prototype only. Actual Aadhaar verification
+      will be done through an authorised KYC provider.
+     </p>
+
+    </div>
+
+
+    <div class="form-group">
+
+     <label>Trade / Skill Certificate</label>
+
+     <input id="tradeCertificate"
+            placeholder="Certificate / Registration ID">
+
+    </div>
+
+
+    <div class="form-group">
+
+     <label>Your Skill</label>
+
+     <select id="workerSkill">
+
+      <option value="">
+       Select skill
+      </option>
+
+      <option>Electrician</option>
+      <option>Plumber</option>
+      <option>Carpenter</option>
+      <option>Painter</option>
+      <option>AC / RO</option>
+      <option>Barber</option>
+      <option>DTH</option>
+      <option>Home Tutor</option>
+      <option>Helper / Labour</option>
+      <option>Mistri</option>
+
+     </select>
+
+    </div>
+
+
+    <label class="check">
+
+     <input id="verificationConsent"
+            type="checkbox">
+
+     <span>
+      I confirm that my verification information is genuine.
+     </span>
+
+    </label>
+
+   </div>
+
+
+   <div class="form-actions">
+
+    <button class="primary-btn">
+     Create Account
+    </button>
+
+    <button type="button"
+            class="back-btn"
+            onclick="showAuth()">
+     Back
+    </button>
+
+   </div>
+
+  </form>
+
+ </div>
+
+</div>
+
+
+<!-- MAIN APP -->
+
+<div id="appPage">
+
+ <header class="header">
+
+  <div class="app-logo">
+   Shramsahyog
+  </div>
+
+  <button class="logout"
+          onclick="logout()">
+   <span data-i18n="logout">Logout</span>
+  </button>
+
+ </header>
+
+
+ <main class="container">
+
+
+  <!-- HOME -->
+
+  <div id="homeContent">
+
+   <div class="welcome">
+
+    <h2 data-i18n="welcome">
+     Welcome to Shramsahyog 👋
+    </h2>
+
+    <p>
+     Find trusted and verified skilled workers near you.
+    </p>
+
+   </div>
+
+
+   <div class="search">
+
+    <input id="serviceSearch"
+           placeholder="🔍 Search a service..."
+           data-i18n="search">
+
+   </div>
+
+
+   <div class="quick-grid">
+
+    <button class="quick emergency"
+            onclick="openSection('emergencySection')">
+
+     <span>🚨</span>
+     <span data-i18n="emergencyHelp">Emergency Help</span>
+
+    </button>
+
+
+    <button class="quick"
+            onclick="openSection('howSection')">
+
+     <span>📖</span>
+     <span data-i18n="howToUse">How to Use</span>
+
+    </button>
+
+   </div>
+
+
+   <h2 class="section-title" data-i18n="chooseService">
+    Choose a Service
+   </h2>
+
+
+   <div class="category-grid">
+
+
+    <div class="category-card"
+         data-service="Electrician"
+         onclick="selectService('Electrician')">
+
+     <div class="category-icon">⚡</div>
+     <h3>Electrician</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Plumber"
+         onclick="selectService('Plumber')">
+
+     <div class="category-icon">🚰</div>
+     <h3>Plumber</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Carpenter"
+         onclick="selectService('Carpenter')">
+
+     <div class="category-icon">🪚</div>
+     <h3>Carpenter</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Painter"
+         onclick="selectService('Painter')">
+
+     <div class="category-icon">🎨</div>
+     <h3>Painter</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="AC RO"
+         onclick="selectService('AC/RO')">
+
+     <div class="category-icon">❄️</div>
+     <h3>AC / RO</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Barber"
+         onclick="selectService('Barber')">
+
+     <div class="category-icon">💈</div>
+     <h3>Barber</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="DTH"
+         onclick="selectService('DTH')">
+
+     <div class="category-icon">📡</div>
+     <h3>DTH</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Home Tutor"
+         onclick="selectService('Home Tutor')">
+
+     <div class="category-icon">👨‍🏫</div>
+     <h3>Home Tutor</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Helper Labour"
+         onclick="selectService('Helper / Labour')">
+
+     <div class="category-icon">👷</div>
+     <h3>Helper / Labour</h3>
+
+    </div>
+
+
+    <div class="category-card"
+         data-service="Mistri"
+         onclick="selectService('Mistri')">
+
+     <div class="category-icon">🏗️</div>
+     <h3>Mistri</h3>
+
+    </div>
+
+   </div>
+
+  </div>
+    <!-- PROBLEM DESCRIPTION -->
+
+  <section id="problemSection"
+           class="section">
+
+   <h2>
+    Describe Your Problem
+   </h2>
+
+   <p class="desc">
+    Tell us about the problem. The worker will
+    inspect it before preparing the quotation.
+   </p>
+
+
+   <div class="selected">
+
+    Selected Service:
+    <span id="selectedService">
+     -
+    </span>
+
+   </div>
+
+
+   <div class="form-group">
+
+    <label>
+     Describe Problem
+    </label>
+
+    <textarea id="problemDescription"
+              placeholder="Example: AC is not cooling..."></textarea>
+
+   </div>
+
+
+   <div class="form-group">
+
+    <label>
+     Preferred Visit Date
+    </label>
+
+    <input id="visitDate"
+           type="date">
+
+   </div>
+
+
+   <button class="primary-btn"
+           onclick="findWorker()">
+
+    Find Verified Worker
+
+   </button>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- WORKER -->
+
+  <section id="workerSection"
+           class="section">
+
+   <h2>
+    Nearby Verified Worker
+   </h2>
+
+   <p class="desc">
+    We found a verified worker for your request.
+   </p>
+
+
+   <div class="worker-card">
+
+    <div class="worker-info">
+
+     <div class="avatar">
+      👨‍🔧
+     </div>
+
+     <div>
+
+      <div class="worker-name">
+       Raj Kumar
+      </div>
+
+      <div class="rating-small">
+       ⭐ 4.8 • 🟢 Verified Worker
+      </div>
+
+     </div>
+
+    </div>
+
+
+    <p>
+     📍 Nearby • Available
+    </p>
+
+    <p style="margin-top:7px;color:#475569">
+
+     Experienced local professional for
+     your selected service.
+
+    </p>
+
+
+    <div class="actions">
+
+     <button class="accept"
+             onclick="acceptWorker()">
+
+      Accept
+
+     </button>
+
+
+     <button class="reject"
+             onclick="rejectWorker()">
+
+      Reject
+
+     </button>
+
+    </div>
+
+   </div>
+
+
+   <button class="back-btn"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- INSPECTION -->
+
+  <section id="inspectionSection"
+           class="section">
+
+   <h2>
+    🔧 Worker Inspection
+   </h2>
+
+   <p class="desc">
+
+    Worker is coming to your location
+    for physical inspection.
+
+   </p>
+
+
+   <div id="inspectionStatus"
+        class="status">
+
+    🚗 Worker is on the way
+
+   </div>
+
+
+   <div class="info-card">
+
+    <p>
+     <b>Worker:</b> Raj Kumar
+    </p>
+
+    <p>
+     <b>Service:</b>
+     <span id="inspectionService">-</span>
+    </p>
+
+    <p>
+     <b>Visit Date:</b>
+     <span id="inspectionDate">-</span>
+    </p>
+
+   </div>
+
+
+   <button class="primary-btn"
+           onclick="nextInspectionStatus()">
+
+    Update Tracking Status
+
+   </button>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- QUOTATION -->
+
+  <section id="quoteSection"
+           class="section">
+
+   <h2>
+    💰 Transparent Quotation
+   </h2>
+
+   <p class="desc">
+
+    After physical inspection, the worker
+    provides an itemized quotation.
+
+   </p>
+
+
+   <div class="quote-box">
+
+    <div class="quote-item">
+
+     <span>
+      Service / Labour
+     </span>
+
+     <span>
+      ₹500
+     </span>
+
+    </div>
+
+
+    <div class="quote-item">
+
+     <span>
+      Material
+     </span>
+
+     <span>
+      ₹300
+     </span>
+
+    </div>
+
+
+    <div class="quote-item">
+
+     <span>
+      Inspection / Visit
+     </span>
+
+     <span>
+      ₹50
+     </span>
+
+    </div>
+
+
+    <div class="quote-item">
+
+     <span>
+      Cooperative Commission (5%)
+     </span>
+
+     <span>
+      ₹43
+     </span>
+
+    </div>
+
+
+    <div class="quote-total">
+
+     <span>
+      Total
+     </span>
+
+     <span>
+      ₹893
+     </span>
+
+    </div>
+
+
+    <p class="note"
+       style="margin-top:12px">
+
+     Customer can approve or reject the
+     quotation before payment.
+
+    </p>
+
+
+    <div class="actions">
+
+     <button class="accept"
+             onclick="approveQuote()">
+
+      Accept
+
+     </button>
+
+
+     <button class="reject"
+             onclick="rejectQuote()">
+
+      Reject
+
+     </button>
+
+    </div>
+
+   </div>
+
+
+   <button class="back-btn"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- PAYMENT -->
+
+  <section id="paymentSection"
+           class="section">
+
+   <h2>
+    💳 Payment
+   </h2>
+
+   <p class="desc">
+    Choose your preferred payment method.
+   </p>
+
+
+   <button class="payment-option"
+           onclick="selectPayment(this,'UPI')">
+
+    📱 UPI
+
+   </button>
+
+
+   <button class="payment-option"
+           onclick="selectPayment(this,'Bank Transfer')">
+
+    🏦 Bank Transfer
+
+   </button>
+
+
+   <button class="payment-option"
+           onclick="selectPayment(this,'Card')">
+
+    💳 Card
+
+   </button>
+
+
+   <p id="selectedPayment"
+      style="font-weight:bold;margin:12px 0">
+
+    No payment method selected
+
+   </p>
+
+
+   <div class="info-card">
+
+    ⚠️ <b>Demo Mode:</b>
+    No real money is transferred.
+    <br><br>
+    ℹ️ Total includes a 5% cooperative
+    commission (₹43) which supports the
+    worker cooperative platform.
+
+   </div>
+
+
+   <button class="primary-btn"
+           onclick="makePayment()">
+
+    Pay ₹893
+
+   </button>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- TRACKING -->
+
+  <section id="trackingSection"
+           class="section">
+
+   <h2>
+    📍 Track Your Service
+   </h2>
+
+   <p class="desc">
+
+    Track the worker journey from acceptance
+    to service completion.
+
+   </p>
+
+
+   <div id="trackingStatus"
+        class="status">
+
+    Request sent to worker.
+
+   </div>
+
+
+   <div class="timeline">
+
+    <div class="step active">
+     Request Sent
+    </div>
+
+    <div class="step">
+     Worker Accepted
+    </div>
+
+    <div class="step">
+     Worker is on the way
+    </div>
+
+    <div class="step">
+     Worker Reached Location
+    </div>
+
+    <div class="step">
+     Inspection Started
+    </div>
+
+    <div class="step">
+     Inspection Completed
+    </div>
+
+    <div class="step">
+     Quotation Sent
+    </div>
+
+    <div class="step">
+     Quote Approved
+    </div>
+
+    <div class="step">
+     Payment Completed
+    </div>
+
+    <div class="step">
+     Service Completed
+    </div>
+
+   </div>
+
+
+   <button id="nextTrackingBtn"
+           class="primary-btn"
+           onclick="nextTrackingStatus()">
+
+    Simulate Next Status
+
+   </button>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+    <!-- BOOKING HISTORY -->
+
+  <section id="historySection"
+           class="section">
+
+   <h2>
+    📋 Booking History
+   </h2>
+
+   <p class="desc">
+    View your previous Shramsahyog bookings.
+   </p>
+
+   <div id="historyList"></div>
+
+
+   <button class="back-btn"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- PROFILE -->
+
+  <section id="profileSection"
+           class="section">
+
+   <h2>
+    👤 My Profile
+   </h2>
+
+
+   <div class="profile">
+
+    <div class="profile-avatar">
+     👤
+    </div>
+
+    <h3 id="profileName">
+     User
+    </h3>
+
+
+    <div class="profile-info">
+
+     <p>
+      <b>Email:</b>
+      <span id="profileEmail"></span>
+     </p>
+
+     <p>
+      <b>Account:</b>
+      <span id="profileRole"></span>
+     </p>
+
+     <p>
+      <b>Status:</b>
+      <span id="profileStatus"></span>
+     </p>
+
+     <p id="profileSkillRow">
+
+      <b>Skill:</b>
+      <span id="profileSkill"></span>
+
+     </p>
+
+    </div>
+
+   </div>
+
+
+   <button class="back-btn"
+           style="margin-top:15px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- RATING -->
+
+  <section id="ratingSection"
+           class="section">
+
+   <h2>
+    ⭐ Rate Your Worker
+   </h2>
+
+   <p class="desc">
+
+    Your feedback helps us maintain
+    better service quality.
+
+   </p>
+
+
+   <div class="star-box">
+
+    <div>
+     How was your experience?
+    </div>
+
+
+    <div class="stars">
+
+     <span class="star"
+           onclick="setRating(1)">★</span>
+
+     <span class="star"
+           onclick="setRating(2)">★</span>
+
+     <span class="star"
+           onclick="setRating(3)">★</span>
+
+     <span class="star"
+           onclick="setRating(4)">★</span>
+
+     <span class="star"
+           onclick="setRating(5)">★</span>
+
+    </div>
+
+
+    <p id="ratingText">
+     Select a rating
+    </p>
+
+   </div>
+
+
+   <div class="form-group"
+        style="margin-top:15px">
+
+    <label>
+     Review
+    </label>
+
+    <textarea id="reviewText"
+              class="review"
+              placeholder="Write your feedback..."></textarea>
+
+   </div>
+
+
+   <button class="primary-btn"
+           onclick="submitRating()">
+
+    Submit Review
+
+   </button>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- COMPLAINT -->
+
+  <section id="supportSection"
+           class="section">
+
+   <h2>
+    🆘 Complaint / Support
+   </h2>
+
+   <p class="desc">
+
+    Facing any issue? Raise a complaint
+    and our support team can review it.
+
+   </p>
+
+
+   <div class="form-group">
+
+    <label>
+     Issue Type
+    </label>
+
+    <select id="issueType">
+
+     <option>
+      Worker Behaviour
+     </option>
+
+     <option>
+      Service Quality
+     </option>
+
+     <option>
+      Payment Issue
+     </option>
+
+     <option>
+      Quotation Issue
+     </option>
+
+     <option>
+      Other
+     </option>
+
+    </select>
+
+   </div>
+
+
+   <div class="form-group">
+
+    <label>
+     Describe Your Issue
+    </label>
+
+    <textarea id="complaintText"
+              placeholder="Explain your issue..."></textarea>
+
+   </div>
+
+
+   <button class="primary-btn"
+           onclick="submitComplaint()">
+
+    Raise Complaint
+
+   </button>
+
+
+   <div id="complaintResult"
+        style="margin-top:15px"></div>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+  <!-- EMERGENCY -->
+
+  <section id="emergencySection"
+           class="section">
+
+   <h2>
+    🚨 Emergency Service
+   </h2>
+
+   <p class="desc">
+
+    For urgent household problems,
+    request quick assistance from an
+    available verified worker.
+
+   </p>
+
+
+   <div class="info-card">
+
+    <p>
+     <b>Emergency Services:</b>
+    </p>
+
+    <p>
+     ⚡ Electrical Emergency
+    </p>
+
+    <p>
+     🚰 Water Leakage
+    </p>
+
+    <p>
+     ❄️ AC Emergency
+    </p>
+
+    <p>
+     🔧 Other Urgent Repair
+    </p>
+
+   </div>
+
+
+   <div class="form-group">
+
+    <label>
+     Emergency Type
+    </label>
+
+    <select id="emergencyType">
+
+     <option>
+      Electrical Emergency
+     </option>
+
+     <option>
+      Water Leakage
+     </option>
+
+     <option>
+      AC Emergency
+     </option>
+
+     <option>
+      Other Urgent Repair
+     </option>
+
+    </select>
+
+   </div>
+
+
+   <div class="form-group">
+
+    <label>
+     Short Description
+    </label>
+
+    <textarea id="emergencyDescription"
+              placeholder="Describe the emergency..."></textarea>
+
+   </div>
+
+
+   <button class="primary-btn"
+           onclick="sendEmergencyRequest()">
+
+    Request Emergency Help
+
+   </button>
+
+
+   <button class="back-btn"
+           style="margin-top:9px"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+    <!-- HOW TO USE -->
+
+  <section id="howSection"
+           class="section">
+
+   <h2>
+    📖 How to Use Shramsahyog
+   </h2>
+
+   <p class="desc">
+    Simple step-by-step working of the platform.
+   </p>
+
+
+   <div class="how">
+
+    <h3>
+     👤 Customer
+    </h3>
+
+    <p>
+
+     Login/Create Account →
+     Choose Service →
+     Describe Problem →
+     Find Verified Worker →
+     Worker Accepts →
+     Track Worker →
+     Physical Inspection →
+     Quotation →
+     Accept/Reject →
+     Payment →
+     Service Completed →
+     Rating & Review.
+
+    </p>
+
+   </div>
+
+
+   <div class="how">
+
+    <h3>
+     👨‍🔧 Worker
+    </h3>
+
+    <p>
+
+     Create Worker Account →
+     KYC & Trade Certificate Verification →
+     Select Skill →
+     Receive Request →
+     Accept Request →
+     Go to Customer Location →
+     Inspection →
+     Transparent Quotation →
+     Complete Service →
+     Customer Rating.
+
+    </p>
+
+   </div>
+
+
+   <div class="how">
+
+    <h3>
+     🛡️ Worker Verification
+    </h3>
+
+    <p>
+
+     Worker registration includes
+     KYC status and Trade/Skill Certificate
+     information. In the production app,
+     actual verification will use an authorised
+     verification provider.
+
+    </p>
+
+   </div>
+
+
+   <div class="how">
+
+    <h3>
+     📍 Tracking
+    </h3>
+
+    <p>
+
+     Customer can follow the worker journey:
+     Worker Accepted →
+     On the Way →
+     Reached Location →
+     Inspection →
+     Quotation →
+     Payment →
+     Service Completed.
+
+    </p>
+
+   </div>
+
+
+   <div class="how">
+
+    <h3>
+     💰 Transparent Pricing
+    </h3>
+
+    <p>
+
+     After inspection, the customer receives
+     an itemized quotation before approving
+     the service. The customer can accept
+     or reject the quotation.
+
+    </p>
+
+   </div>
+
+
+   <button class="back-btn"
+           onclick="goHome()">
+
+    ← Back to Home
+
+   </button>
+
+  </section>
+
+
+ </main>
+
+
+ <!-- BOTTOM NAVIGATION -->
+
+ <nav class="bottom">
+
+  <button class="nav"
+          onclick="goHome()">
+
+   <span class="nav-icon">
+    🏠
+   </span>
+
+   Home
+
+  </button>
+
+
+  <button class="nav"
+          onclick="showHistory()">
+
+   <span class="nav-icon">
+    📋
+   </span>
+
+   History
+
+  </button>
+
+
+  <button class="nav"
+          onclick="showProfile()">
+
+   <span class="nav-icon">
+    👤
+   </span>
+
+   Profile
+
+  </button>
+
+
+  <button class="nav"
+          onclick="showSupport()">
+
+   <span class="nav-icon">
+    🆘
+   </span>
+
+   Support
+
+  </button>
+
+ </nav>
+
+</div>
+
+
+<script>
+
+/* GLOBAL VARIABLES */
+
+let currentUser = null;
+
+let currentBooking = null;
+
+let trackingStage = 0;
+
+let inspectionStage = 0;
+
+let selectedPaymentMethod = "";
+
+let selectedRating = 0;
+
+let navHistory = [];
+
+let currentLang = localStorage.getItem("shramsahyogLang") || "en";
+
+
+/* MULTILANGUAGE (EN / HI) */
+
+const i18nDict = {
+ back:{en:"Back",hi:"पीछे"},
+ logout:{en:"Logout",hi:"लॉगआउट"},
+ welcome:{en:"Welcome to Shramsahyog 👋",hi:"श्रमसहयोग में आपका स्वागत है 👋"},
+ chooseService:{en:"Choose a Service",hi:"सेवा चुनें"},
+ emergencyHelp:{en:"Emergency Help",hi:"आपातकालीन सहायता"},
+ howToUse:{en:"How to Use",hi:"कैसे उपयोग करें"},
+ search:{en:"🔍 Search a service...",hi:"🔍 सेवा खोजें..."},
+ login:{en:"Login",hi:"लॉगिन"},
+ createAccount:{en:"Create Account",hi:"खाता बनाएं"}
+};
+
+function applyLanguage(){
+
+ document.querySelectorAll("[data-i18n]").forEach(function(el){
+
+  let key=el.getAttribute("data-i18n");
+
+  if(i18nDict[key]){
+   el.textContent=i18nDict[key][currentLang];
+  }
+
+ });
+
+
+ let search=document.getElementById("serviceSearch");
+
+ if(search && i18nDict.search){
+  search.placeholder=i18nDict.search[currentLang];
+ }
+
+}
+
+
+function toggleLanguage(){
+
+ currentLang = currentLang==="en" ? "hi" : "en";
+
+ localStorage.setItem("shramsahyogLang",currentLang);
+
+ applyLanguage();
+
+}
+
+
+/* DARK THEME */
+
+function applyTheme(){
+
+ let saved=localStorage.getItem("shramsahyogTheme");
+
+ if(saved==="dark"){
+
+  document.body.classList.add("dark");
+
+  document.getElementById("themeBtnText").textContent="☀️ Light";
+
+ }else{
+
+  document.body.classList.remove("dark");
+
+  document.getElementById("themeBtnText").textContent="🌙 Dark";
+
+ }
+
+}
+
+
+function toggleDarkMode(){
+
+ let isDark=document.body.classList.toggle("dark");
+
+ localStorage.setItem(
+  "shramsahyogTheme",
+  isDark ? "dark" : "light"
+ );
+
+ document.getElementById("themeBtnText").textContent=
+  isDark ? "☀️ Light" : "🌙 Dark";
+
+}
+
+
+/* GLOBAL BACK NAVIGATION */
+
+function goBackNav(){
+
+ if(document.getElementById("appPage").style.display!=="block"){
+
+  navHistory=[];
+
+  showAuth();
+
+  return;
+
+ }
+
+ navHistory.pop();
+
+ let previous=navHistory.pop();
+
+ if(previous){
+
+  openSection(previous,false);
+
+ }else{
+
+  goHome(false);
+
+ }
+
+}
+
+
+/* PAGE CONTROL */
+
+function hideAllPages(){
+
+ document.getElementById("authPage").style.display="none";
+
+ document.getElementById("loginPage").style.display="none";
+
+ document.getElementById("forgotPage").style.display="none";
+
+ document.getElementById("signupPage").style.display="none";
+
+ document.getElementById("appPage").style.display="none";
+
+}
+
+
+/* SHOW AUTH */
+
+function showAuth(){
+
+ hideAllPages();
+
+ document.getElementById("authPage").style.display="flex";
+
+ window.scrollTo(0,0);
+
+}
+
+
+/* SHOW LOGIN */
+
+function showLogin(){
+
+ hideAllPages();
+
+ document.getElementById("loginPage").style.display="flex";
+
+ window.scrollTo(0,0);
+
+}
+
+
+/* SHOW FORGOT */
+
+function showForgot(){
+
+ hideAllPages();
+
+ document.getElementById("forgotPage").style.display="flex";
+
+ window.scrollTo(0,0);
+
+}
+
+
+/* SHOW SIGNUP */
+
+function showSignup(){
+
+ hideAllPages();
+
+ document.getElementById("signupPage").style.display="flex";
+
+ toggleWorkerBox();
+
+ window.scrollTo(0,0);
+
+}
+
+
+/* SHOW APP */
+
+function showApp(){
+
+ hideAllPages();
+
+ document.getElementById("appPage").style.display="block";
+
+ updateProfile();
+
+ goHome();
+
+}
+
+
+/* SECTION CONTROL */
+
+function hideSections(){
+
+ document.querySelectorAll(".section").forEach(function(section){
+
+  section.style.display="none";
+
+ });
+
+ document.getElementById("homeContent").style.display="none";
+
+}
+
+
+/* OPEN SECTION AT TOP */
+
+function openSection(id,pushHistory){
+
+ hideSections();
+
+ let section=document.getElementById(id);
+
+ if(section){
+  section.style.display="block";
+ }
+
+ if(pushHistory!==false){
+  navHistory.push(id);
+ }
+
+ window.scrollTo({
+  top:0,
+  behavior:"instant"
+ });
+
+}
+
+
+/* HOME */
+
+function goHome(pushHistory){
+
+ hideSections();
+
+ document.getElementById("homeContent").style.display="block";
+
+ if(pushHistory!==false){
+  navHistory.push("homeContent");
+ }
+
+ window.scrollTo({
+  top:0,
+  behavior:"instant"
+ });
+
+}
+
+
+/* WORKER BOX */
+
+function toggleWorkerBox(){
+
+ let role=document.getElementById("signupRole").value;
+
+ document.getElementById("workerKycBox").style.display=
+  role==="Worker" ? "block" : "none";
+
+}
+
+
+/* GET USERS */
+
+function getUsers(){
+
+ return JSON.parse(
+  localStorage.getItem("shramsahyogUsers") || "[]"
+ );
+
+}
+
+
+/* SAVE USERS */
+
+function saveUsers(users){
+
+ localStorage.setItem(
+  "shramsahyogUsers",
+  JSON.stringify(users)
+ );
+
+}
+
+
+/* CREATE ACCOUNT */
+
+function createAccount(event){
+
+ event.preventDefault();
+
+ let name=
+  document.getElementById("signupName").value.trim();
+
+ let email=
+  document.getElementById("signupEmail").value.trim();
+
+ let password=
+  document.getElementById("signupPassword").value;
+
+ let role=
+  document.getElementById("signupRole").value;
+
+ let kyc="";
+
+ let certificate="";
+
+ let skill="";
+
+ let consent=false;
+
+
+ if(role==="Worker"){
+
+  kyc=document.getElementById("kycStatus").value;
+
+  certificate=
+   document.getElementById("tradeCertificate").value.trim();
+
+  skill=
+   document.getElementById("workerSkill").value;
+
+  consent=
+   document.getElementById("verificationConsent").checked;
+
+
+  if(kyc!=="Verified"){
+
+   alert(
+    "Worker ke liye KYC verification required hai."
+   );
+
+   return;
+
+  }
+
+
+  if(!certificate){
+
+   alert(
+    "Trade / Skill Certificate ID enter karein."
+   );
+
+   return;
+
+  }
+
+
+  if(!skill){
+
+   alert(
+    "Apni skill select karein."
+   );
+
+   return;
+
+  }
+
+
+  if(!consent){
+
+   alert(
+    "Verification confirmation tick karein."
+   );
+
+   return;
+
+  }
+
+ }
+
+
+ let users=getUsers();
+
+
+ let exists=users.find(function(u){
+
+  return u.email.toLowerCase()===email.toLowerCase();
+
+ });
+
+
+ if(exists){
+
+  alert(
+   "Account already exists. Please login."
+  );
+
+  showLogin();
+
+  return;
+
+ }
+
+
+ let newUser={
+
+  id:Date.now(),
+
+  name:name,
+
+  email:email,
+
+  password:password,
+
+  role:role,
+
+  kyc:role==="Worker" ? "Verified" : "N/A",
+
+  certificate:certificate,
+
+  skill:skill,
+
+  status:
+   role==="Worker"
+    ? "Verified Worker"
+    : "Customer"
+
+ };
+
+
+ users.push(newUser);
+
+ saveUsers(users);
+
+
+ currentUser=newUser;
+
+ localStorage.setItem(
+  "shramsahyogCurrentUser",
+  JSON.stringify(currentUser)
+ );
+
+
+ alert(
+  role==="Worker"
+   ? "Verified Worker account created successfully!"
+   : "Account created successfully!"
+ );
+
+
+ showApp();
+
+}
+
+
+/* LOGIN */
+
+function login(event){
+
+ event.preventDefault();
+
+ let email=
+  document.getElementById("loginEmail").value.trim();
+
+ let password=
+  document.getElementById("loginPass").value;
+
+
+ let users=getUsers();
+
+
+ let found=users.find(function(u){
+
+  return(
+   u.email.toLowerCase()===email.toLowerCase() &&
+   u.password===password
+  );
+
+ });
+
+
+ if(!found){
+
+  alert(
+   "Invalid email or password."
+  );
+
+  return;
+
+ }
+
+
+ currentUser=found;
+
+ localStorage.setItem(
+  "shramsahyogCurrentUser",
+  JSON.stringify(currentUser)
+ );
+
+
+ alert("Login successful!");
+
+ showApp();
+
+}
+/* RESET PASSWORD */
+
+function resetPassword(event){
+
+ event.preventDefault();
+
+ let email=
+  document.getElementById("resetEmail").value.trim();
+
+ let newPassword=
+  document.getElementById("newPassword").value;
+
+ let confirmPassword=
+  document.getElementById("confirmPassword").value;
+
+
+ if(newPassword!==confirmPassword){
+
+  alert(
+   "New password aur confirm password same hona chahiye."
+  );
+
+  return;
+
+ }
+
+
+ let users=getUsers();
+
+
+ let index=users.findIndex(function(u){
+
+  return(
+   u.email.toLowerCase()===
+   email.toLowerCase()
+  );
+
+ });
+
+
+ if(index===-1){
+
+  alert(
+   "Is email se account nahi mila."
+  );
+
+  return;
+
+ }
+
+
+ users[index].password=newPassword;
+
+ saveUsers(users);
+
+
+ alert(
+  "Password successfully reset. Ab login karein."
+ );
+
+
+ showLogin();
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+ localStorage.removeItem(
+  "shramsahyogCurrentUser"
+ );
+
+ currentUser=null;
+
+ currentBooking=null;
+
+ trackingStage=0;
+
+ inspectionStage=0;
+
+ showAuth();
+
+}
+
+
+/* SERVICE SEARCH */
+
+document.addEventListener(
+ "DOMContentLoaded",
+ function(){
+
+  let search=
+   document.getElementById("serviceSearch");
+
+
+  if(search){
+
+   search.addEventListener(
+    "input",
+    function(){
+
+     let value=
+      search.value.toLowerCase();
+
+
+     document
+      .querySelectorAll(".category-card")
+      .forEach(function(card){
+
+       let name=
+        card.dataset.service.toLowerCase();
+
+
+       card.style.display=
+        name.includes(value)
+         ? "block"
+         : "none";
+
+      });
+
+    }
+   );
+
+  }
+
+
+  let saved=
+   localStorage.getItem(
+    "shramsahyogCurrentUser"
+   );
+
+
+  if(saved){
+
+   try{
+
+    currentUser=
+     JSON.parse(saved);
+
+    showApp();
+
+   }catch(error){
+
+    showAuth();
+
+   }
+
+  }else{
+
+   showAuth();
+
+  }
+
+ }
+);
+
+
+/* SELECT SERVICE */
+
+function selectService(service){
+
+ document.getElementById(
+  "selectedService"
+ ).textContent=service;
+
+
+ openSection(
+  "problemSection"
+ );
+
+}
+
+
+/* FIND WORKER */
+
+function findWorker(){
+
+ let problem=
+  document.getElementById(
+   "problemDescription"
+  ).value.trim();
+
+
+ let service=
+  document.getElementById(
+   "selectedService"
+  ).textContent;
+
+
+ if(!problem){
+
+  alert(
+   "Please describe your problem."
+  );
+
+  return;
+
+ }
+
+
+ currentBooking={
+
+  id:Date.now(),
+
+  customer:
+   currentUser
+    ? currentUser.name
+    : "Customer",
+
+  service:service,
+
+  problem:problem,
+
+  date:
+   document.getElementById(
+    "visitDate"
+   ).value,
+
+  status:"Request Sent",
+
+  created:
+   new Date().toLocaleString()
+
+ };
+
+
+ saveBooking();
+
+
+ trackingStage=0;
+
+ inspectionStage=0;
+
+
+ openSection(
+  "workerSection"
+ );
+
+
+ alert(
+  "Request sent! A nearby verified worker has been found."
+ );
+
+}
+
+
+/* ACCEPT WORKER */
+
+function acceptWorker(){
+
+ if(!currentBooking)return;
+
+
+ currentBooking.status=
+  "Worker Accepted";
+
+
+ saveBooking();
+
+
+ document.getElementById(
+  "inspectionService"
+ ).textContent=
+  currentBooking.service;
+
+
+ document.getElementById(
+  "inspectionDate"
+ ).textContent=
+  currentBooking.date ||
+  "To be scheduled";
+
+
+ inspectionStage=0;
+
+
+ openSection(
+  "inspectionSection"
+ );
+
+
+ alert(
+  "Worker accepted your request. Tracking started."
+ );
+
+}
+
+
+/* REJECT WORKER */
+
+function rejectWorker(){
+
+ if(currentBooking){
+
+  currentBooking.status=
+   "Worker Rejected";
+
+  saveBooking();
+
+ }
+
+
+ alert(
+  "Worker request rejected."
+ );
+
+
+ goHome();
+
+}
+
+
+/* INSPECTION STATUS */
+
+function nextInspectionStatus(){
+
+ if(!currentBooking)return;
+
+
+ inspectionStage++;
+
+
+ let status=
+  document.getElementById(
+   "inspectionStatus"
+  );
+
+
+ if(inspectionStage===1){
+
+  status.textContent=
+   "📍 Worker has reached your location";
+
+
+  currentBooking.status=
+   "Worker Reached Location";
+
+
+  saveBooking();
+
+
+ }else if(inspectionStage===2){
+
+  status.textContent=
+   "🔧 Inspection is in progress";
+
+
+  currentBooking.status=
+   "Inspection Started";
+
+
+  saveBooking();
+
+
+ }else{
+
+  status.textContent=
+   "✅ Inspection completed";
+
+
+  currentBooking.status=
+   "Inspection Completed";
+
+
+  saveBooking();
+
+
+  alert(
+   "Inspection completed. Quotation is ready."
+  );
+
+
+  openSection(
+   "quoteSection"
+  );
+
+ }
+
+}
+
+
+/* APPROVE QUOTE */
+
+function approveQuote(){
+
+ if(!currentBooking)return;
+
+
+ currentBooking.status=
+  "Quote Approved";
+
+
+ saveBooking();
+
+
+ openSection(
+  "paymentSection"
+ );
+
+
+}
+
+
+/* REJECT QUOTE */
+
+function rejectQuote(){
+
+ if(currentBooking){
+
+  currentBooking.status=
+   "Quotation Rejected";
+
+  saveBooking();
+
+ }
+
+
+ alert(
+  "Quotation rejected.\n\n"+
+  "Only applicable inspection/visit charge "+
+  "may remain. No labour or material service "+
+  "charge is applied."
+ );
+
+
+ goHome();
+
+}
+
+
+/* PAYMENT */
+
+function selectPayment(button,method){
+
+ document
+  .querySelectorAll(".payment-option")
+  .forEach(function(item){
+
+   item.classList.remove("selected");
+
+  });
+
+
+ button.classList.add("selected");
+
+
+ selectedPaymentMethod=method;
+
+
+ document.getElementById(
+  "selectedPayment"
+ ).textContent=
+  "Selected: "+method;
+
+}
+
+
+/* MAKE PAYMENT */
+
+function makePayment(){
+
+ if(!selectedPaymentMethod){
+
+  alert(
+   "Please select a payment method."
+  );
+
+  return;
+
+ }
+
+
+ if(currentBooking){
+
+  currentBooking.status=
+   "Payment Completed";
+
+  saveBooking();
+
+ }
+
+
+ let baseAmount=850;
+ let commission=Math.round(baseAmount*0.05);
+ let workerShare=baseAmount-commission;
+
+ alert(
+  "Demo Payment Successful! 🎉\n\n"+
+  "Method: "+
+  selectedPaymentMethod+
+  "\n\nTotal Paid: ₹"+(baseAmount+commission)+
+  "\nWorker Share: ₹"+workerShare+
+  "\nCooperative Commission (5%): ₹"+commission+
+  "\n\nNo real money was transferred."
+ );
+
+
+ trackingStage=8;
+
+
+ openSection(
+  "trackingSection"
+ );
+
+
+ updateTracking();
+
+}
+
+
+/* TRACKING */
+
+function updateTracking(){
+
+ let steps=
+  document.querySelectorAll(
+   "#trackingSection .step"
+  );
+
+
+ steps.forEach(function(step,index){
+
+  step.classList.remove(
+   "active",
+   "done"
+  );
+
+
+  if(index<trackingStage){
+
+   step.classList.add("done");
+
+  }
+
+
+  if(index===trackingStage){
+
+   step.classList.add("active");
+
+  }
+
+ });
+
+
+ let messages=[
+
+  "Request sent to worker.",
+
+  "Worker accepted your request.",
+
+  "🚗 Worker is on the way.",
+
+  "📍 Worker reached your location.",
+
+  "🔧 Inspection started.",
+
+  "✅ Inspection completed.",
+
+  "💰 Quotation sent.",
+
+  "Quotation approved.",
+
+  "💳 Payment completed.",
+
+  "🎉 Service completed."
+
+ ];
+
+
+ document.getElementById(
+  "trackingStatus"
+ ).textContent=
+  messages[trackingStage] ||
+  messages[0];
+
+
+ let button=
+  document.getElementById(
+   "nextTrackingBtn"
+  );
+
+
+ if(trackingStage>=9){
+
+  button.textContent=
+   "Service Completed";
+
+  button.disabled=true;
+
+ }else{
+
+  button.textContent=
+   "Simulate Next Status";
+
+  button.disabled=false;
+
+ }
+
+}
+
+
+/* NEXT TRACKING STATUS */
+
+function nextTrackingStatus(){
+
+ if(!currentBooking){
+
+  alert(
+   "Please create a booking first."
+  );
+
+  return;
+
+ }
+
+
+ if(trackingStage<9){
+
+  trackingStage++;
+
+
+  let statuses=[
+
+   "Request Sent",
+
+   "Worker Accepted",
+
+   "Worker On The Way",
+
+   "Worker Reached Location",
+
+   "Inspection Started",
+
+   "Inspection Completed",
+
+   "Quote Sent",
+
+   "Quote Approved",
+
+   "Payment Completed",
+
+   "Service Completed"
+
+  ];
+
+
+  currentBooking.status=
+   statuses[trackingStage];
+
+
+  saveBooking();
+
+
+  updateTracking();
+
+
+  if(trackingStage===9){
+
+   alert(
+    "🎉 Service Completed Successfully!"
+   );
+
+
+   setTimeout(
+    function(){
+
+     showRating();
+
+    },
+    300
+   );
+
+  }
+
+ }
+
+}
+
+
+/* SHOW TRACKING */
+
+function showTracking(){
+
+ openSection(
+  "trackingSection"
+ );
+
+ updateTracking();
+
+}
+
+
+/* BOOKINGS */
+
+function getBookings(){
+
+ return JSON.parse(
+  localStorage.getItem(
+   "shramsahyogBookings"
+  ) || "[]"
+ );
+
+}
+
+
+function saveBooking(){
+
+ if(!currentBooking)return;
+
+
+ let list=getBookings();
+
+
+ let index=list.findIndex(
+  function(item){
+
+   return item.id===currentBooking.id;
+
+  }
+ );
+
+
+ if(index===-1){
+
+  list.unshift(currentBooking);
+
+ }else{
+
+  list[index]=currentBooking;
+
+ }
+
+
+ localStorage.setItem(
+  "shramsahyogBookings",
+  JSON.stringify(list)
+ );
+
+}
+
+
+/* HISTORY */
+
+function showHistory(){
+
+ openSection(
+  "historySection"
+ );
+
+
+ let list=getBookings();
+
+ let box=
+  document.getElementById(
+   "historyList"
+  );
+
+
+ if(!list.length){
+
+  box.innerHTML=
+   '<div class="info-card" style="text-align:center">'+
+   'No bookings yet.'+
+   '</div>';
+
+  return;
+
+ }
+
+
+ box.innerHTML="";
+
+
+ list.forEach(function(item){
+
+  let div=
+   document.createElement("div");
+
+
+  div.className=
+   "history-item";
+
+
+  div.innerHTML=
+
+   '<div class="history-top">'+
+
+    '<b>'+
+     item.service+
+    '</b>'+
+
+    '<span class="badge">'+
+     item.status+
+    '</span>'+
+
+   '</div>'+
+
+   '<p><b>Problem:</b> '+
+    item.problem+
+   '</p>'+
+
+   '<p><b>Visit:</b> '+
+    (item.date || "Not scheduled")+
+   '</p>'+
+
+   '<small>'+
+    item.created+
+   '</small>';
+
+
+  box.appendChild(div);
+
+ });
+
+}
+
+
+/* PROFILE */
+
+function updateProfile(){
+
+ if(!currentUser)return;
+
+
+ document.getElementById(
+  "profileName"
+ ).textContent=
+  currentUser.name;
+
+
+ document.getElementById(
+  "profileEmail"
+ ).textContent=
+  currentUser.email;
+
+
+ document.getElementById(
+  "profileRole"
+ ).textContent=
+  currentUser.role;
+
+
+ document.getElementById(
+  "profileStatus"
+ ).textContent=
+  currentUser.status;
+
+
+ if(currentUser.role==="Worker"){
+
+  document.getElementById(
+   "profileSkill"
+  ).textContent=
+   currentUser.skill;
+
+
+  document.getElementById(
+   "profileSkillRow"
+  ).style.display=
+   "block";
+
+ }else{
+
+  document.getElementById(
+   "profileSkillRow"
+  ).style.display=
+   "none";
+
+ }
+
+}
+
+
+function showProfile(){
+
+ openSection(
+  "profileSection"
+ );
+
+ updateProfile();
+
+}
+
+
+/* RATING */
+
+function showRating(){
+
+ openSection(
+  "ratingSection"
+ );
+
+
+ selectedRating=0;
+
+
+ document
+  .querySelectorAll(".star")
+  .forEach(function(star){
+
+   star.classList.remove("on");
+
+  });
+
+
+ document.getElementById(
+  "ratingText"
+ ).textContent=
+  "Select a rating";
+
+
+ document.getElementById(
+  "reviewText"
+ ).value="";
+
+}
+
+
+function setRating(number){
+
+ selectedRating=number;
+
+
+ document
+  .querySelectorAll(".star")
+  .forEach(function(star,index){
+
+   star.classList.toggle(
+    "on",
+    index<number
+   );
+
+  });
+
+
+ document.getElementById(
+  "ratingText"
+ ).textContent=
+  number+" / 5 stars";
+
+}
+
+
+function submitRating(){
+
+ if(!selectedRating){
+
+  alert(
+   "Please select a rating."
+  );
+
+  return;
+
+ }
+
+
+ let review=
+  document.getElementById(
+   "reviewText"
+  ).value.trim();
+
+
+ if(currentBooking){
+
+  currentBooking.rating=
+   selectedRating;
+
+  currentBooking.review=
+   review;
+
+  currentBooking.status=
+   "Service Completed & Rated";
+
+  saveBooking();
+
+ }
+
+
+ alert(
+  "Thank you! Your rating and review have been submitted. ⭐"
+ );
+
+
+ goHome();
+
+}
+
+
+/* SUPPORT */
+
+function showSupport(){
+
+ openSection(
+  "supportSection"
+ );
+
+
+ let list=
+  JSON.parse(
+   localStorage.getItem(
+    "shramsahyogComplaints"
+   ) || "[]"
+  );
+
+
+ let result=
+  document.getElementById(
+   "complaintResult"
+  );
+
+
+ if(list.length){
+
+  result.innerHTML="";
+
+
+  list.slice(0,3)
+   .forEach(function(item){
+
+    let div=
+     document.createElement("div");
+
+
+    div.className=
+     "support-item";
+
+
+    div.innerHTML=
+
+     "<b>"+
+      item.type+
+     "</b>"+
+
+     "<span>"+
+      item.text+
+     "</span>"+
+
+     '<p class="support-status" style="margin-top:7px">'+
+      "Status: "+
+      item.status+
+     "</p>";
+
+
+    result.appendChild(div);
+
+   });
+
+ }
+
+}
+
+
+/* COMPLAINT */
+
+function submitComplaint(){
+
+ let type=
+  document.getElementById(
+   "issueType"
+  ).value;
+
+
+ let text=
+  document.getElementById(
+   "complaintText"
+  ).value.trim();
+
+
+ if(!text){
+
+  alert(
+   "Please describe your issue."
+  );
+
+  return;
+
+ }
+
+
+ let list=
+  JSON.parse(
+   localStorage.getItem(
+    "shramsahyogComplaints"
+   ) || "[]"
+  );
+
+
+ list.unshift({
+
+  id:Date.now(),
+
+  type:type,
+
+  text:text,
+
+  status:"Submitted",
+
+  date:new Date().toLocaleString()
+
+ });
+
+
+ localStorage.setItem(
+  "shramsahyogComplaints",
+  JSON.stringify(list)
+ );
+
+
+ document.getElementById(
+  "complaintText"
+ ).value="";
+
+
+ document.getElementById(
+  "complaintResult"
+ ).innerHTML=
+
+  '<div class="support-card">'+
+
+   "<b>Complaint Submitted ✅</b>"+
+
+   '<p style="margin-top:7px;color:#475569">'+
+    "Our support team will review your complaint."+
+   "</p>"+
+
+   '<p class="support-status" style="margin-top:7px">'+
+    "Status: Submitted"+
+   "</p>"+
+
+  "</div>";
+
+
+ alert(
+  "Complaint submitted successfully."
+ );
+
+}
+
+
+/* EMERGENCY */
+
+function sendEmergencyRequest(){
+
+ let type=
+  document.getElementById(
+   "emergencyType"
+  ).value;
+
+
+ let description=
+  document.getElementById(
+   "emergencyDescription"
+  ).value.trim();
+
+
+ if(!description){
+
+  alert(
+   "Please describe the emergency."
+  );
+
+  return;
+
+ }
+
+
+ currentBooking={
+
+  id:Date.now(),
+
+  customer:
+   currentUser
+    ? currentUser.name
+    : "Customer",
+
+  service:
+   "Emergency - "+type,
+
+  problem:
+   description,
+
+  date:
+   "Immediate",
+
+  status:
+   "Emergency Request Sent",
+
+  created:
+   new Date().toLocaleString()
+
+ };
+
+
+ saveBooking();
+
+
+ trackingStage=0;
+
+
+ alert(
+  "🚨 Emergency request sent!\n\n"+
+  "A nearby verified worker will be contacted."
+ );
+
+
+ openSection(
+  "trackingSection"
+ );
+
+
+ updateTracking();
+
+}
+
+
+/* INITIAL CHECK */
+
+if(
+ localStorage.getItem(
+  "shramsahyogCurrentUser"
+ )
+){
+
+ try{
+
+  currentUser=
+   JSON.parse(
+    localStorage.getItem(
+     "shramsahyogCurrentUser"
+    )
+   );
+
+  showApp();
+
+ }catch(error){
+
+  showAuth();
+
+ }
+
+}else{
+
+ showAuth();
+
+}
+
+applyTheme();
+applyLanguage();
+
+
+/*
+HOW TO USE:
+
+1. Save this complete code as index.html.
+2. Open it in your browser.
+3. Create a Customer account or Worker account.
+4. For Worker registration, select KYC Verified,
+   add Trade/Skill Certificate ID and select skill.
+5. Login.
+6. Choose any service.
+7. Describe the problem.
+8. Select a visit date.
+9. Find and accept the verified worker.
+10. Use "Update Tracking Status" to demonstrate:
+    Worker on the way → Reached → Inspection.
+11. After inspection, quotation appears.
+12. Accept quotation and select payment method.
+13. Payment is DEMO only.
+14. Open Tracking to show the complete journey.
+15. After completion, give Rating & Review.
+16. History shows previous bookings.
+17. Profile shows account information.
+18. Support allows complaint submission.
+19. Emergency Help creates an urgent request.
+20. How to Use explains the complete app flow.
+
+IMPORTANT:
+This is a prototype.
+Actual Aadhaar/KYC verification should be
+done through an authorised KYC provider
+in the real production application.
+*/
+</script>
+
+</body>
+</html>
